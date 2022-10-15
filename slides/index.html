@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Slides</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="generator" content="reveal-ck 4.0.0">
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/monokai.css">
+
+<link rel="stylesheet" href="css/reveal-ck.css">
+
+
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+  </head>
+
+  <body>
+    <div class="reveal">
+  <div class="slides">
+    <section>
+
+<style type="text/css">
+.reveal pre {
+  font-size: 1em;
+  width: 100%;
+}
+</style>
+
+<h3>Mis-code-ception</h3>
+
+<h4 class="fragment">Let’s have magic moments 🪄🎩</h4>
+
+</section>
+<section>
+
+<h2>The goal is to</h2>
+
+<h1 class="fragment">have fun</h1>
+
+<h3 class="fragment">with unusual code</h3>
+
+</section>
+<section>
+
+<h2>Agenda</h2>
+
+<ul class="fragmented-list">
+  <li>How to check if a number is prime using regex?</li>
+  <li>Does Ruby understand SQL?</li>
+  <li>Code hidden in a number</li>
+  <li>Writing code using only symbols</li>
+  <li>…</li>
+</ul>
+
+</section>
+<section>
+<section>
+
+<h3>How to check if a number is prime using regex?</h3>
+
+</section>
+<section>
+
+<h2>Like this?</h2>
+
+<pre><code class="language-ruby">def prime?(n)
+  n.to_s.match? /^(2|3|5|7)$/
+end
+</code></pre>
+
+</section>
+<section>
+
+<h3>What about 11, 13 and others?</h3>
+
+<pre><code class="language-ruby">(0..100).select { prime?(_1) }
+#=&gt; [2, 3, 5, 7]
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">def prime?(n)
+  '1'*n !~ /^1?$|^(11+?)\1+$/
+end
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">(0..100).select { prime?(_1) }
+#=&gt; [2, 3, 5, 7, 11, (...), 89, 97]
+</code></pre>
+
+</section>
+<section>
+
+<h3>How does it work?</h3>
+
+</section>
+</section>
+
+<section>
+<section>
+
+<h3>Does Ruby understand SQL?</h3>
+
+</section>
+<section>
+
+<h1>?</h1>
+
+</section>
+</section>
+
+  </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script src="js/fragment-list.js"></script>
+
+<script>
+  (function() {
+  function extend( a, b ) {
+    for(var i in b) {
+      a[i] = b[i];
+    }
+  }
+  var baseOptions = {
+    transition: 'default',
+    hash: true,
+    dependencies: [
+      { src: 'plugin/markdown/marked.js' },
+      { src: 'plugin/markdown/markdown.js' },
+      { src: 'plugin/highlight/highlight.js' },
+      { src: 'plugin/notes/notes.js', async: true }
+    ]
+  };
+
+  
+
+  var configOptions = {"controls":false,"progress":true}
+  var initializeOptions = {};
+  extend(initializeOptions, baseOptions);
+  extend(initializeOptions, configOptions);
+  Reveal.initialize(initializeOptions);
+})();
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<section>
+
+<style type="text/css">
+.reveal pre {
+  font-size: 1em;
+  width: 100%;
+}
+</style>
+
+<h3>Mis-code-ception</h3>
+
+<h4 class="fragment">Let’s have magic moments 🪄🎩</h4>
+
+</section>
+<section>
+
+<h2>The goal is to</h2>
+
+<h1 class="fragment">have fun</h1>
+
+<h3 class="fragment">with unusual code</h3>
+
+</section>
+<section>
+
+<h2>Agenda</h2>
+
+<ul class="fragmented-list">
+  <li>How to check if a number is prime using regex?</li>
+  <li>Does Ruby understand SQL?</li>
+  <li>Code hidden in a number</li>
+  <li>Writing code using only symbols</li>
+  <li>…</li>
+</ul>
+
+</section>
+<section>
+<section>
+
+<h3>How to check if a number is prime using regex?</h3>
+
+</section>
+<section>
+
+<h2>Like this?</h2>
+
+<pre><code class="language-ruby">def prime?(n)
+  n.to_s.match? /^(2|3|5|7)$/
+end
+</code></pre>
+
+</section>
+<section>
+
+<h3>What about 11, 13 and others?</h3>
+
+<pre><code class="language-ruby">(0..100).select { prime?(_1) }
+#=&gt; [2, 3, 5, 7]
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">def prime?(n)
+  '1'*n !~ /^1?$|^(11+?)\1+$/
+end
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">(0..100).select { prime?(_1) }
+#=&gt; [2, 3, 5, 7, 11, (...), 89, 97]
+</code></pre>
+
+</section>
+<section>
+
+<h3>How does it work?</h3>
+
+</section>
+</section>
+
+<section>
+<section>
+
+<h3>Does Ruby understand SQL?</h3>
+
+</section>
+<section>
+
+<h1>?</h1>
+
+</section>
+</section>
