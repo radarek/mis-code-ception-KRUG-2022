@@ -1,0 +1,6 @@
+theme: serif
+# solarized
+# transition: fade
+revealjs_config:
+  controls: false
+  progress: true
