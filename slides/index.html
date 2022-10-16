@@ -50,6 +50,10 @@
   font-size: 1em;
   width: 100%;
 }
+
+.reveal section img {
+  border: none;
+}
 </style>
 
 <h3>Mis-code-ception</h3>
@@ -87,7 +91,18 @@
 </section>
 <section>
 
-<h2>Like this?</h2>
+<h2>What is a prime number?</h2>
+
+<p class="fragment">It is an integer number &gt; 1 that is divisible only by itself and 1.</p>
+
+<p class="fragment">6 is not prime because divides by 1, 2, 3 and 6.</p>
+
+<p class="fragment">7 is prime because it divides only by 1 and 7.</p>
+
+</section>
+<section>
+
+<h2>Regex check, like this?</h2>
 
 <pre><code class="language-ruby">def prime?(n)
   n.to_s.match? /^(2|3|5|7)$/
@@ -97,11 +112,16 @@ end
 </section>
 <section>
 
-<h3>What about 11, 13 and others?</h3>
-
 <pre><code class="language-ruby">(0..100).select { prime?(_1) }
 #=&gt; [2, 3, 5, 7]
 </code></pre>
+
+<h2>What about 11, 13 and others?</h2>
+
+</section>
+<section>
+
+<h1>Ready?</h1>
 
 </section>
 <section>
@@ -121,7 +141,27 @@ end
 </section>
 <section>
 
-<h3>How does it work?</h3>
+<h2>How does it work?</h2>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">'1'*n !~ /^1?$|^(11+?)\1+$/
+</code></pre>
+
+<p class="fragment"><img width="50%" src="images/9-1.png"></p>
+
+<p class="fragment"><img width="50%" src="images/9-2.png"></p>
+
+</section>
+<section>
+
+<h2>What about performance?</h2>
+
+</section>
+<section>
+
+<p><img src="images/prime-chart.png"></p>
 
 </section>
 </section>
@@ -135,6 +175,9 @@ end
 <section>
 
 <h1>?</h1>
+
+<pre><code class="language-sql">SELECT `jobs`.* FROM `jobs`
+</code></pre>
 
 </section>
 </section>

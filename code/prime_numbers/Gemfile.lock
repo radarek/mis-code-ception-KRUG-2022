@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    benchmark-bigo (1.0.0)
+      benchmark-ips (~> 2.0)
+      chartkick (~> 1.2)
+    benchmark-ips (2.0.0)
+    chartkick (1.5.2)
+
+PLATFORMS
+  aarch64-linux
+
+DEPENDENCIES
+  benchmark-bigo (= 1.0.0)
+  benchmark-ips (= 2.0.0)
+
+BUNDLED WITH
+   2.3.7

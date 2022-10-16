@@ -3,6 +3,10 @@
   font-size: 1em;
   width: 100%;
 }
+
+.reveal section img {
+  border: none;
+}
 </style>
 
 ### Mis-code-ception
@@ -37,7 +41,20 @@
 
 ---
 
-## Like this?
+## What is a prime number?
+
+{:.fragment}
+It is an integer number > 1 that is divisible only by itself and 1.
+
+{:.fragment}
+6 is not prime because divides by 1, 2, 3 and 6.
+
+{:.fragment}
+7 is prime because it divides only by 1 and 7.
+
+---
+
+## Regex check, like this?
 
 ```ruby
 def prime?(n)
@@ -47,12 +64,16 @@ end
 
 ---
 
-### What about 11, 13 and others?
-
 ```ruby
 (0..100).select { prime?(_1) }
 #=> [2, 3, 5, 7]
 ```
+
+## What about 11, 13 and others?
+
+---
+
+# Ready?
 
 ---
 
@@ -71,7 +92,27 @@ end
 
 ---
 
-### How does it work?
+## How does it work?
+
+---
+
+```ruby
+'1'*n !~ /^1?$|^(11+?)\1+$/
+```
+
+{:.fragment}
+<img width="50%" src='images/9-1.png'>
+
+{:.fragment}
+<img width="50%" src='images/9-2.png'>
+
+---
+
+## What about performance?
+
+---
+
+<img src='images/prime-chart.png'>
 
 ***
 
@@ -82,6 +123,10 @@ end
 ---
 
 # ?
+
+```sql
+SELECT `jobs`.* FROM `jobs`
+```
 
 ***
 
