@@ -8,6 +8,10 @@ pre.smaller {
   font-size: 0.75em !important;
 }
 
+.smallestest {
+  font-size: 0.5em !important;
+}
+
 pre.smallest {
   font-size: 0.58em !important;
 }
@@ -42,10 +46,131 @@ KRUG, 17.10.2022
 ## Agenda
 
 {:.fragmented-list}
-* How to check if a number is prime using regex?
 * Does Ruby understand SQL?
+* How to check if a number is prime using regex?
 * Writing code using only symbol characters.
-* Deceptive code
+* Deceptive code.
+
+***
+
+### Does Ruby understand SQL?
+
+---
+
+```sql
+SELECT `tags`.* FROM `tags`
+```
+
+---
+
+{:.smaller}
+```bash
+[1] pry(main)> SELECT `tags`.* FROM `tags`
+Errno::ENOENT: No such file or directory - tags
+from (pry):1:in ``'
+```
+
+{:.fragment}
+### Do you see something interesting?
+
+---
+
+```sql
+SELECT `tags`.* FROM `tags`
+```
+### This SQL is syntatically valid Ruby code!
+
+---
+
+```ruby
+SELECT(`tags`.*(FROM(`tags`)))
+```
+
+{:.fragment}
+```ruby
+`tags` # call system command "tags"
+```
+
+{:.fragment}
+```ruby
+SELECT, FROM # method call
+```
+
+{:.fragment}
+```ruby
+`x.*(y)` # x * y
+```
+
+---
+
+### What about other SQL commands?
+
+---
+
+{:.smallest}
+```SQL
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags`
+  (id int);
+ALTER TABLE `tags`
+  ADD COLUMN name varchar(255);
+INSERT INTO `tags`
+  VALUES(1, "krug");
+INSERT INTO `tags`
+  VALUES(2, "ruby");
+INSERT INTO `tags`
+  VALUES(3, "programming");
+SELECT `tags`.* FROM `tags`;
+SELECT `tags`.* FROM `tags`
+  WHERE name LIKE "%u%";
+```
+
+---
+
+{:.smaller}
+```bash
+$ mysql -h host.docker.internal magic < demo.sql
+id      name
+1       krug
+2       ruby
+3       programming
+id      name
+1       krug
+2       ruby
+```
+
+---
+
+{:.smaller}
+```bash
+$ ruby -r./sql demo.sql
+id      name
+1       krug
+2       ruby
+3       programming
+id      name
+1       krug
+2       ruby
+```
+
+---
+
+### Conclusions
+
+* Methods can have capital letters
+* Ruby distinguishes them from constants on syntax level
+* a method and a constant with the same name can coexist
+
+
+```ruby
+Array(1)   # method
+Array()    # method
+Array 1    # method
+Array      # constant
+Array.new  # constant
+```
+
+***
 
 ***
 
@@ -138,32 +263,15 @@ end
 
 <img src='images/prime-chart.png'>
 
-***
-
-***
-
-### Does Ruby understand SQL?
-
 ---
 
-```sql
-SELECT `tags`.* FROM `tags`
-```
+### Conclusions
 
----
-
-```bash
-$ ruby -e 'SELECT `tags`.* FROM `tags`'
--e:1:in ``': No such file or directory
- - tags (Errno::ENOENT)
-	from -e:1:in `<main>'
-```
-
----
-
-```ruby
-SELECT(`tags`.*(FROM(`tags`)))
-```
+* Regexes are usefull but can be tricky
+* Always test your regexes with different inputs
+* Think about worst cases
+* Don't use it for primary number checking ;)
+* Read the book "Mastering Regular Expressions"
 
 ***
 
@@ -233,7 +341,6 @@ Is it possible to write **any** Ruby code using only these characters?
 
 ---
 
-{:.fragment}
 ```ruby
 $$/$$
 ```
@@ -328,6 +435,26 @@ puts compile(ARGF.read)
 
 ---
 
+```shell
+$ ruby compiler.rb helloworld.rb
+```
+
+---
+
+<p class="smallestest monospace" style="text-align: left;">
+_=$$/$$;__=_+_;->(&___){___['',''<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_)+_))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_))),''<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_)+_)<<(__*(__*(__*(__*(__*(__*(_-_)+_))))))<<(__*(__*(__*(__*(__*(__*(_-_)+_))))+_))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)))+_))))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)<<(__*(__*(__*(__*(__*(__*(_-_)+_))))))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_))+_))+_)+_)+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_)))<<(__*(__*(__*(__*(__*(__*(_-_)+_)))))+_)<<(__*(__*(__*(__*(__*(__*(_-_)+_))))+_))<<(__*(__*(__*(__*(_-_)+_))+_))]}[&:"#{''<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_)+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_)))}"]
+</p>
+
+---
+
+{:.smaller}
+```shell
+$ ruby compiler.rb helloworld.rb  | ruby
+Hello World!
+```
+
+---
+
 <img src='images/deeper.jpg'>
 
 ---
@@ -341,6 +468,13 @@ $ ruby compiler.rb compiler.rb > compiler2.rb
 
 {:.fragment}
 <img width="30%" src="images/meme.png">
+
+---
+
+### Conclusions
+
+* Generating code is fun
+* Generating unusual code is uber fun ;)
 
 ***
 
@@ -423,4 +557,12 @@ puts "This code is good <3"
 puts "This code is evil"||"^H^H^H^H^H^H^H^Hinnocent"
 ```
 
+---
+
+### Conclusions
+* Don't trust your intuition
+* If you think you know how something works then ... you may be wrong
+
 ***
+
+# Thank you!

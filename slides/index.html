@@ -55,6 +55,10 @@ pre.smaller {
   font-size: 0.75em !important;
 }
 
+.smallestest {
+  font-size: 0.5em !important;
+}
+
 pre.smallest {
   font-size: 0.58em !important;
 }
@@ -89,13 +93,127 @@ KRUG, 17.10.2022</p>
 <h2>Agenda</h2>
 
 <ul class="fragmented-list">
-  <li>How to check if a number is prime using regex?</li>
   <li>Does Ruby understand SQL?</li>
+  <li>How to check if a number is prime using regex?</li>
   <li>Writing code using only symbol characters.</li>
-  <li>Deceptive code</li>
+  <li>Deceptive code.</li>
 </ul>
 
 </section>
+<section>
+<section>
+
+<h3>Does Ruby understand SQL?</h3>
+
+</section>
+<section>
+
+<pre><code class="language-sql">SELECT `tags`.* FROM `tags`
+</code></pre>
+
+</section>
+<section>
+
+<pre class="smaller"><code class="language-bash">[1] pry(main)&gt; SELECT `tags`.* FROM `tags`
+Errno::ENOENT: No such file or directory - tags
+from (pry):1:in ``'
+</code></pre>
+
+<h3 class="fragment">Do you see something interesting?</h3>
+
+</section>
+<section>
+
+<pre><code class="language-sql">SELECT `tags`.* FROM `tags`
+</code></pre>
+<h3>This SQL is syntatically valid Ruby code!</h3>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">SELECT(`tags`.*(FROM(`tags`)))
+</code></pre>
+
+<pre class="fragment"><code class="language-ruby">`tags` # call system command "tags"
+</code></pre>
+
+<pre class="fragment"><code class="language-ruby">SELECT, FROM # method call
+</code></pre>
+
+<pre class="fragment"><code class="language-ruby">`x.*(y)` # x * y
+</code></pre>
+
+</section>
+<section>
+
+<h3>What about other SQL commands?</h3>
+
+</section>
+<section>
+
+<pre class="smallest"><code class="language-SQL">DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags`
+  (id int);
+ALTER TABLE `tags`
+  ADD COLUMN name varchar(255);
+INSERT INTO `tags`
+  VALUES(1, "krug");
+INSERT INTO `tags`
+  VALUES(2, "ruby");
+INSERT INTO `tags`
+  VALUES(3, "programming");
+SELECT `tags`.* FROM `tags`;
+SELECT `tags`.* FROM `tags`
+  WHERE name LIKE "%u%";
+</code></pre>
+
+</section>
+<section>
+
+<pre class="smaller"><code class="language-bash">$ mysql -h host.docker.internal magic &lt; demo.sql
+id      name
+1       krug
+2       ruby
+3       programming
+id      name
+1       krug
+2       ruby
+</code></pre>
+
+</section>
+<section>
+
+<pre class="smaller"><code class="language-bash">$ ruby -r./sql demo.sql
+id      name
+1       krug
+2       ruby
+3       programming
+id      name
+1       krug
+2       ruby
+</code></pre>
+
+</section>
+<section>
+
+<h3>Conclusions</h3>
+
+<ul>
+  <li>Methods can have capital letters</li>
+  <li>Ruby distinguishes them from constants on syntax level</li>
+  <li>a method and a constant with the same name can coexist</li>
+</ul>
+
+<pre><code class="language-ruby">Array(1)   # method
+Array()    # method
+Array 1    # method
+Array      # constant
+Array.new  # constant
+</code></pre>
+
+</section>
+</section>
+
 <section>
 <section>
 
@@ -191,33 +309,17 @@ end
 <p><img src="images/prime-chart.png"></p>
 
 </section>
-</section>
-
-<section>
 <section>
 
-<h3>Does Ruby understand SQL?</h3>
+<h3>Conclusions</h3>
 
-</section>
-<section>
-
-<pre><code class="language-sql">SELECT `tags`.* FROM `tags`
-</code></pre>
-
-</section>
-<section>
-
-<pre><code class="language-bash">$ ruby -e 'SELECT `tags`.* FROM `tags`'
--e:1:in ``': No such file or directory
- - tags (Errno::ENOENT)
-	from -e:1:in `&lt;main&gt;'
-</code></pre>
-
-</section>
-<section>
-
-<pre><code class="language-ruby">SELECT(`tags`.*(FROM(`tags`)))
-</code></pre>
+<ul>
+  <li>Regexes are usefull but can be tricky</li>
+  <li>Always test your regexes with different inputs</li>
+  <li>Think about worst cases</li>
+  <li>Don’t use it for primary number checking ;)</li>
+  <li>Read the book “Mastering Regular Expressions”</li>
+</ul>
 
 </section>
 </section>
@@ -297,7 +399,7 @@ end
 </section>
 <section>
 
-<pre class="fragment"><code class="language-ruby">$$/$$
+<pre><code class="language-ruby">$$/$$
 </code></pre>
 
 <pre class="fragment"><code class="language-ruby">'$'=~/$/
@@ -390,6 +492,26 @@ puts compile(ARGF.read)
 </section>
 <section>
 
+<pre><code class="language-shell">$ ruby compiler.rb helloworld.rb
+</code></pre>
+
+</section>
+<section>
+
+<p class="smallestest monospace" style="text-align: left;">
+_=$$/$$;__=_+_;-&gt;(&amp;___){___['',''&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_)+_))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_))),''&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_))+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_)+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_))))))&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_))))+_))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)))+_))))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_))))))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_))+_))+_)+_)+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_)))))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_))))+_))&lt;&lt;(__*(__*(__*(__*(_-_)+_))+_))]}[&amp;:"#{''&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)+_)))+_)+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_)))}"]
+</p>
+
+</section>
+<section>
+
+<pre class="smaller"><code class="language-shell">$ ruby compiler.rb helloworld.rb  | ruby
+Hello World!
+</code></pre>
+
+</section>
+<section>
+
 <p><img src="images/deeper.jpg"></p>
 
 </section>
@@ -401,6 +523,16 @@ puts compile(ARGF.read)
 </code></pre>
 
 <p class="fragment"><img width="30%" src="images/meme.png"></p>
+
+</section>
+<section>
+
+<h3>Conclusions</h3>
+
+<ul>
+  <li>Generating code is fun</li>
+  <li>Generating unusual code is uber fun ;)</li>
+</ul>
 
 </section>
 </section>
@@ -483,6 +615,20 @@ puts "This code is good &lt;3"
 </code></pre>
 
 </section>
+<section>
+
+<h3>Conclusions</h3>
+<ul>
+  <li>Don’t trust your intuition</li>
+  <li>If you think you know how something works then … you may be wrong</li>
+</ul>
+
+</section>
+</section>
+<section>
+
+<h1>Thank you!</h1>
+
 </section>
 
   </div>
