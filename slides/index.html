@@ -146,6 +146,18 @@ from (pry):1:in ``'
 </section>
 <section>
 
+<h3>Constant vs method</h3>
+
+<pre><code class="language-ruby">Array(1)   # method
+Array()    # method
+Array 1    # method
+Array      # constant
+Array.new  # constant.method
+</code></pre>
+
+</section>
+<section>
+
 <h3>What about other SQL commands?</h3>
 
 </section>
@@ -196,20 +208,23 @@ id      name
 </section>
 <section>
 
+<h3 class="smallester">Implementation idea</h3>
+
+<pre><code class="language-ruby">def DROP(...); end
+def SELECT(...); end
+# etc.
+</code></pre>
+
+</section>
+<section>
+
 <h3>Conclusions</h3>
 
 <ul>
-  <li>Methods can have capital letters</li>
-  <li>Ruby distinguishes them from constants on syntax level</li>
-  <li>a method and a constant with the same name can coexist</li>
+  <li>Methods can have capital letters.</li>
+  <li>Ruby distinguishes them from constants on syntax level.</li>
+  <li>A method and a constant with the same names can coexist.</li>
 </ul>
-
-<pre><code class="language-ruby">Array(1)   # method
-Array()    # method
-Array 1    # method
-Array      # constant
-Array.new  # constant
-</code></pre>
 
 </section>
 </section>

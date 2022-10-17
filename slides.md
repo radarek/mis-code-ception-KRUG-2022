@@ -103,6 +103,18 @@ SELECT, FROM # method call
 
 ---
 
+### Constant vs method
+
+```ruby
+Array(1)   # method
+Array()    # method
+Array 1    # method
+Array      # constant
+Array.new  # constant.method
+```
+
+---
+
 ### What about other SQL commands?
 
 ---
@@ -155,20 +167,22 @@ id      name
 
 ---
 
-### Conclusions
-
-* Methods can have capital letters
-* Ruby distinguishes them from constants on syntax level
-* a method and a constant with the same name can coexist
-
+{:.smallester}
+### Implementation idea
 
 ```ruby
-Array(1)   # method
-Array()    # method
-Array 1    # method
-Array      # constant
-Array.new  # constant
+def DROP(...); end
+def SELECT(...); end
+# etc.
 ```
+
+---
+
+### Conclusions
+
+* Methods can have capital letters.
+* Ruby distinguishes them from constants on syntax level.
+* A method and a constant with the same names can coexist.
 
 ***
 
