@@ -1,20 +1,20 @@
-DROP TABLE IF EXISTS `jobs`;
+DROP TABLE IF EXISTS `tags`;
 
-CREATE TABLE `jobs`
+CREATE TABLE `tags`
   (id int);
 
-ALTER TABLE `jobs`
+ALTER TABLE `tags`
   ADD COLUMN name varchar(255);
 
-INSERT INTO `jobs`
-  VALUES(1, "programmer");
+INSERT INTO `tags`
+  VALUES(1, "science");
 
-INSERT INTO `jobs`
-  VALUES(2, "pilot");
+INSERT INTO `tags`
+  VALUES(2, "ruby");
 
-INSERT INTO `jobs`
-  VALUES(3, "taxi driver");
+INSERT INTO `tags`
+  VALUES(3, "programming");
 
-SELECT `jobs`.* FROM `jobs`;
-SELECT `jobs`.* FROM `jobs`
+SELECT `tags`.* FROM `tags`;
+SELECT `tags`.* FROM `tags`
   WHERE name LIKE "%i%";

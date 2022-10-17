@@ -4,8 +4,20 @@
   width: 100%;
 }
 
+pre.smaller {
+  font-size: 0.75em !important;
+}
+
+pre.smallest {
+  font-size: 0.58em !important;
+}
+
 .reveal section img {
   border: none;
+}
+
+.monospace {
+  font-family: monospace !important;
 }
 </style>
 
@@ -32,7 +44,7 @@
 * How to check if a number is prime using regex?
 * Does Ruby understand SQL?
 * Code hidden in a number
-* Writing code using only symbols
+* Writing code using only symbol characters
 * ...
 
 ***
@@ -112,6 +124,12 @@ end
 
 ---
 
+```ruby
+'1111111' =~ /^(11+?)\1+$/
+```
+
+---
+
 <img src='images/prime-chart.png'>
 
 ***
@@ -122,10 +140,23 @@ end
 
 ---
 
-# ?
-
 ```sql
-SELECT `jobs`.* FROM `jobs`
+SELECT `tags`.* FROM `tags`
+```
+
+---
+
+```bash
+$ ruby -e 'SELECT `tags`.* FROM `tags`'
+-e:1:in ``': No such file or directory
+ - tags (Errno::ENOENT)
+	from -e:1:in `<main>'
+```
+
+---
+
+```ruby
+SELECT(`tags`.*(FROM(`tags`)))
 ```
 
 ***
@@ -137,5 +168,170 @@ SELECT `jobs`.* FROM `jobs`
 ---
 
 # ?
+
+***
+
+***
+
+## Writing code using only symbol characters
+
+---
+
+Is it possible to write **any** Ruby code using only these characters?
+
+<h3 class="monospace">!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~</h3>
+
+---
+
+### Let's start with something simple.
+
+---
+
+### How to construct any string without using letters?
+
+---
+
+<p class="monospace">
+"Hello"
+</p>
+<p class="monospace">
+=>
+</p>
+<p class="monospace">
+"?????"
+</p>
+
+---
+
+<h3 class="monospace">String#<<</h3>
+
+---
+
+<img src='images/string-append.png'>
+
+###### https://ruby-doc.org/core-3.1.2/String.html#method-i-3C-3C
+
+---
+
+```ruby
+''<<72<<101<<108<<108<<111
+#=> "Hello"
+```
+
+---
+
+
+### How to create any integer using only symbol characters?
+
+---
+
+<p class="monospace">
+1
+</p>
+<p class="monospace">
+=>
+</p>
+<p class="monospace">
+?
+</p>
+
+---
+
+{:.fragment}
+```ruby
+$$/$$
+```
+
+{:.fragment}
+```ruby
+'$'=~/$/
+```
+
+{:.fragment}
+```ruby
+-~($$[-$$])
+'>'<=>'<'
+$$[-$$]**$$[-$$]
+```
+
+---
+
+```ruby
+_=$$/$$ #=> 1
+__=_+_  #=> 2
+```
+
+---
+
+H - 72
+```ruby
+_+_...+_ # repeat 72 times
+# or
+(__*(__*(__*(__*(__*(__*_))+_))))
+```
+
+---
+
+### How to execute code from a string?
+
+---
+
+### eval(string)
+
+---
+
+{:.smaller}
+```ruby
+eval("
+_=$$/$$;__=_+_;
+''<<(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)))"
+)
+```
+
+---
+
+### What about symbolizing eval?
+
+---
+
+# Ready?
+
+---
+
+```ruby
+->(&_){
+  _['','eval','<code>']
+}[&:"#{'send'}"]
+```
+
+source: https://youtu.be/6K7EmeptEHo?t=574
+
+---
+
+### Let's write a compiler
+
+---
+
+{:.smallest}
+```ruby
+def decompose(n)
+  n == 0 ? '(_-_)' : '('+'__*'+decompose(n/2)+'+_'*(n%2)+')'
+end
+
+def s(str)
+  ["''", *str.chars.map { decompose(_1.ord) }].join('<<')
+end
+
+def compile(code)
+  "_=$$/$$;__=_+_;->(&___){___[''," +
+  "#{s('eval')},#{s(code)}]}[&:\"\#{#{s('send')}}\"]"
+end
+
+puts compile(ARGF.read)
+```
+
+---
+
+<img src='images/deeper.jpg'>
 
 ***
