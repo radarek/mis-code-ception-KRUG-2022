@@ -23,8 +23,9 @@ pre.smallest {
 
 ### Mis-code-ception
 
-{:.fragment}
-#### Let's have magic moments 🪄🎩
+<img width="20%" src="images/question.jpg">
+Radosław Bułat, github.com/radarek
+KRUG, 17.10.2022
 
 ---
 
@@ -34,7 +35,7 @@ pre.smallest {
 # have fun
 
 {:.fragment}
-### with unusual code
+### with unusual code.
 
 ---
 
@@ -43,9 +44,8 @@ pre.smallest {
 {:.fragmented-list}
 * How to check if a number is prime using regex?
 * Does Ruby understand SQL?
-* Code hidden in a number
-* Writing code using only symbol characters
-* ...
+* Writing code using only symbol characters.
+* Deceptive code
 
 ***
 
@@ -59,14 +59,14 @@ pre.smallest {
 It is an integer number > 1 that is divisible only by itself and 1.
 
 {:.fragment}
-6 is not prime because divides by 1, 2, 3 and 6.
+6 is not prime because it is divisible by 1, 2, 3 and 6.
 
 {:.fragment}
-7 is prime because it divides only by 1 and 7.
+7 is prime because it is divisible only by 1 and 7.
 
 ---
 
-## Regex check, like this?
+## Regex? Like this?
 
 ```ruby
 def prime?(n)
@@ -81,7 +81,13 @@ end
 #=> [2, 3, 5, 7]
 ```
 
+---
+
 ## What about 11, 13 and others?
+
+---
+
+### There is something more clever.
 
 ---
 
@@ -163,17 +169,7 @@ SELECT(`tags`.*(FROM(`tags`)))
 
 ***
 
-### Code hidden in a number
-
----
-
-# ?
-
-***
-
-***
-
-## Writing code using only symbol characters
+## Writing code using only symbol characters.
 
 ---
 
@@ -308,7 +304,7 @@ source: https://youtu.be/6K7EmeptEHo?t=574
 
 ---
 
-### Let's write a compiler
+### Let's write a compiler.
 
 ---
 
@@ -333,5 +329,98 @@ puts compile(ARGF.read)
 ---
 
 <img src='images/deeper.jpg'>
+
+---
+
+### What if...
+
+{:.smaller .fragment}
+```bash
+$ ruby compiler.rb compiler.rb > compiler2.rb
+```
+
+{:.fragment}
+<img width="30%" src="images/meme.png">
+
+***
+
+***
+
+## Deceptive code
+
+---
+
+```bash
+$ ls
+innocent_code.rb
+```
+
+---
+
+```bash
+$ ruby innocent_code.rb 
+This code is evil
+```
+
+## Oh no 😱!
+
+---
+
+```bash
+$ cat innocent_code.rb
+puts "This code is innocent"
+```
+
+{:.fragment}
+### How?
+
+---
+
+```ruby
+File.write(__FILE__, <<CODE)
+puts "This code is innocent"
+CODE
+puts "This code is evil"
+```
+
+---
+
+```bash
+$ ls
+innocent_code2.rb
+```
+
+---
+
+```bash
+$ cat innocent_code2.rb
+puts "This code is good <3"
+```
+
+---
+
+```bash
+$ more innocent_code2.rb
+puts "This code is good <3"
+```
+
+---
+
+```bash
+$ ruby innocent_code2.rb
+This code is evil
+$ cat innocent_code2.rb
+puts "This code is good <3"
+```
+
+{:.fragment}
+### How?
+
+---
+
+{:.smaller}
+```ruby
+puts "This code is evil"||"^H^H^H^H^H^H^H^Hinnocent"
+```
 
 ***

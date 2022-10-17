@@ -70,7 +70,9 @@ pre.smallest {
 
 <h3>Mis-code-ception</h3>
 
-<h4 class="fragment">Let’s have magic moments 🪄🎩</h4>
+<p><img width="20%" src="images/question.jpg"><br>
+Radosław Bułat, github.com/radarek<br>
+KRUG, 17.10.2022</p>
 
 </section>
 <section>
@@ -79,7 +81,7 @@ pre.smallest {
 
 <h1 class="fragment">have fun</h1>
 
-<h3 class="fragment">with unusual code</h3>
+<h3 class="fragment">with unusual code.</h3>
 
 </section>
 <section>
@@ -89,9 +91,8 @@ pre.smallest {
 <ul class="fragmented-list">
   <li>How to check if a number is prime using regex?</li>
   <li>Does Ruby understand SQL?</li>
-  <li>Code hidden in a number</li>
-  <li>Writing code using only symbol characters</li>
-  <li>…</li>
+  <li>Writing code using only symbol characters.</li>
+  <li>Deceptive code</li>
 </ul>
 
 </section>
@@ -107,14 +108,14 @@ pre.smallest {
 
 <p class="fragment">It is an integer number &gt; 1 that is divisible only by itself and 1.</p>
 
-<p class="fragment">6 is not prime because divides by 1, 2, 3 and 6.</p>
+<p class="fragment">6 is not prime because it is divisible by 1, 2, 3 and 6.</p>
 
-<p class="fragment">7 is prime because it divides only by 1 and 7.</p>
+<p class="fragment">7 is prime because it is divisible only by 1 and 7.</p>
 
 </section>
 <section>
 
-<h2>Regex check, like this?</h2>
+<h2>Regex? Like this?</h2>
 
 <pre><code class="language-ruby">def prime?(n)
   n.to_s.match? /^(2|3|5|7)$/
@@ -128,7 +129,15 @@ end
 #=&gt; [2, 3, 5, 7]
 </code></pre>
 
+</section>
+<section>
+
 <h2>What about 11, 13 and others?</h2>
+
+</section>
+<section>
+
+<h3>There is something more clever.</h3>
 
 </section>
 <section>
@@ -216,20 +225,7 @@ end
 <section>
 <section>
 
-<h3>Code hidden in a number</h3>
-
-</section>
-<section>
-
-<h1>?</h1>
-
-</section>
-</section>
-
-<section>
-<section>
-
-<h2>Writing code using only symbol characters</h2>
+<h2>Writing code using only symbol characters.</h2>
 
 </section>
 <section>
@@ -370,7 +366,7 @@ _=$$/$$;__=_+_;
 </section>
 <section>
 
-<h3>Let’s write a compiler</h3>
+<h3>Let’s write a compiler.</h3>
 
 </section>
 <section>
@@ -395,6 +391,96 @@ puts compile(ARGF.read)
 <section>
 
 <p><img src="images/deeper.jpg"></p>
+
+</section>
+<section>
+
+<h3>What if…</h3>
+
+<pre class="smaller fragment"><code class="language-bash">$ ruby compiler.rb compiler.rb &gt; compiler2.rb
+</code></pre>
+
+<p class="fragment"><img width="30%" src="images/meme.png"></p>
+
+</section>
+</section>
+
+<section>
+<section>
+
+<h2>Deceptive code</h2>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ ls
+innocent_code.rb
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ ruby innocent_code.rb 
+This code is evil
+</code></pre>
+
+<h2>Oh no 😱!</h2>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ cat innocent_code.rb
+puts "This code is innocent"
+</code></pre>
+
+<h3 class="fragment">How?</h3>
+
+</section>
+<section>
+
+<pre><code class="language-ruby">File.write(__FILE__, &lt;&lt;CODE)
+puts "This code is innocent"
+CODE
+puts "This code is evil"
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ ls
+innocent_code2.rb
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ cat innocent_code2.rb
+puts "This code is good &lt;3"
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ more innocent_code2.rb
+puts "This code is good &lt;3"
+</code></pre>
+
+</section>
+<section>
+
+<pre><code class="language-bash">$ ruby innocent_code2.rb
+This code is evil
+$ cat innocent_code2.rb
+puts "This code is good &lt;3"
+</code></pre>
+
+<h3 class="fragment">How?</h3>
+
+</section>
+<section>
+
+<pre class="smaller"><code class="language-ruby">puts "This code is evil"||"^H^H^H^H^H^H^H^Hinnocent"
+</code></pre>
 
 </section>
 </section>
