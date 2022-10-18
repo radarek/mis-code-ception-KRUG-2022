@@ -389,6 +389,12 @@ _+_...+_ # repeat 72 times
 
 ---
 
+<p class="smallest monospace" style="text-align: left;">
+_=$$/$$;__=_+_;''<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)))+_))))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))<<(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)
+</p>
+
+---
+
 ### How to execute code from a string?
 
 ---
@@ -397,12 +403,10 @@ _+_...+_ # repeat 72 times
 
 ---
 
-{:.smaller}
+{:.smallest}
 ```ruby
-eval("
-_=$$/$$;__=_+_;
-''<<(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)))"
-)
+_=$$/$$;__=_+_
+p eval(''<<(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_))))
 ```
 
 ---
@@ -488,7 +492,7 @@ $ ruby compiler.rb compiler.rb > compiler2.rb
 ### Conclusions
 
 * Generating code is fun
-* Generating unusual code is uber fun ;)
+* Generating useless code is uber fun ;)
 
 ***
 
@@ -542,14 +546,14 @@ innocent_code2.rb
 
 ```bash
 $ cat innocent_code2.rb
-puts "This code is good <3"
+puts "This code is innocent"
 ```
 
 ---
 
 ```bash
 $ more innocent_code2.rb
-puts "This code is good <3"
+puts "This code is innocent"
 ```
 
 ---
@@ -558,7 +562,7 @@ puts "This code is good <3"
 $ ruby innocent_code2.rb
 This code is evil
 $ cat innocent_code2.rb
-puts "This code is good <3"
+puts "This code is innocent"
 ```
 
 {:.fragment}

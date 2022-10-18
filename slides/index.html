@@ -444,6 +444,13 @@ __=_+_  #=&gt; 2
 </section>
 <section>
 
+<p class="smallest monospace" style="text-align: left;">
+_=$$/$$;__=_+_;''&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)))+_))))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_)))+_))+_)&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)))&lt;&lt;(__*(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)+_)+_)+_)
+</p>
+
+</section>
+<section>
+
 <h3>How to execute code from a string?</h3>
 
 </section>
@@ -454,10 +461,8 @@ __=_+_  #=&gt; 2
 </section>
 <section>
 
-<pre class="smaller"><code class="language-ruby">eval("
-_=$$/$$;__=_+_;
-''&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_)))"
-)
+<pre class="smallest"><code class="language-ruby">_=$$/$$;__=_+_
+p eval(''&lt;&lt;(__*(__*(__*(__*(__*(__*(_-_)+_)+_))+_))))
 </code></pre>
 
 </section>
@@ -546,7 +551,7 @@ Hello World!
 
 <ul>
   <li>Generating code is fun</li>
-  <li>Generating unusual code is uber fun ;)</li>
+  <li>Generating useless code is uber fun ;)</li>
 </ul>
 
 </section>
@@ -602,14 +607,14 @@ innocent_code2.rb
 <section>
 
 <pre><code class="language-bash">$ cat innocent_code2.rb
-puts "This code is good &lt;3"
+puts "This code is innocent"
 </code></pre>
 
 </section>
 <section>
 
 <pre><code class="language-bash">$ more innocent_code2.rb
-puts "This code is good &lt;3"
+puts "This code is innocent"
 </code></pre>
 
 </section>
@@ -618,7 +623,7 @@ puts "This code is good &lt;3"
 <pre><code class="language-bash">$ ruby innocent_code2.rb
 This code is evil
 $ cat innocent_code2.rb
-puts "This code is good &lt;3"
+puts "This code is innocent"
 </code></pre>
 
 <h3 class="fragment">How?</h3>
